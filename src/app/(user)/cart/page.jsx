@@ -5,6 +5,7 @@ import {useGetUser} from "@/hooks/useAuth";
 import Link from "next/link";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import CartItem from "@/pages/(user)/cart/CartItem";
+import CartSummary from "@/pages/(user)/cart/CartSummary";
 
 export default function page() {
     const {data, isLoading} = useGetUser()
@@ -32,7 +33,7 @@ export default function page() {
             </div>
 
             <div className={'col-span-1'}>
-                cart summary
+                <CartSummary payDetail={cart.payDetail}/>
             </div>
 
         </div>

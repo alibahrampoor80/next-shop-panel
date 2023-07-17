@@ -75,7 +75,11 @@ body {
     user-select: none;
     background-color: var(--background-app-rgb);
 }
-
+/*.clearfix::after {*/
+/*     content: "";*/
+/*     display: table;*/
+/*     clear: both;*/
+/* }*/
 
 @keyframes spinner {
     0% {
