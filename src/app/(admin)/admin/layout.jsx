@@ -3,6 +3,8 @@ import '../../globals.css'
 import Header from "@/pages/Header";
 import {Toaster} from "react-hot-toast";
 import Provider from "@/pages/Provider";
+import SideBar from "@/pages/(profile)/profile/SideBar";
+import AdminSideBar from "@/pages/(admin)/admin/AdminSideBar";
 
 
 export const metadata = {
@@ -14,8 +16,13 @@ export default function RootLayout({children}) {
         <html lang="fa" dir={'rtl'}>
         <body className={`${vazirFont.variable} font-sans`} suppressHydrationWarning={true}>
         <Provider>
-            <div className="container xl:max-w-screen-xl">
-                {children}
+            <div className="grid grid-cols-4 bg-white h-screen">
+                <div className="col-span-1 bg-gray-100 overflow-y-auto ">
+                    <AdminSideBar/>
+                </div>
+                <div className="col-span-3 overflow-y-auto p-4">
+                    {children}
+                </div>
             </div>
             <Toaster/>
         </Provider>

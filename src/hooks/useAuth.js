@@ -1,5 +1,5 @@
 import {useQuery} from "react-query";
-import {getUserProfile} from "@/services/authServices";
+import {getAllUsers, getUserProfile} from "@/services/authServices";
 
 export const useGetUser = () => {
     return useQuery({
@@ -9,3 +9,13 @@ export const useGetUser = () => {
         refetchOnWindowFocus: true
     })
 }
+
+export const useGetUsers = () => {
+    return useQuery({
+        queryFn: getAllUsers,
+        queryKey: ['get-users'],
+        retry: false,
+        refetchOnWindowFocus: true
+    })
+}
+

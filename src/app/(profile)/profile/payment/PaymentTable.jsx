@@ -35,9 +35,9 @@ export default function PaymentTable({payments}) {
                             <td className={'table__td font-bold'}>{toPersianNumbersWithComma(payment.amount)}</td>
                             <td className={'table__td'}>{ToLocalDateString(payment.createdAt)}</td>
                             <td className={'table__td'}>{payment.status === "COMPLETED" ?
-                                <span className={'bg-green-600 px-2 py-0.5 rounded-xl text-white '}>موفق</span> :
+                                <span className={'badge badge--success px-2 py-0.5 rounded-xl text-white '}>موفق</span> :
                                 <span
-                                    className={'bg-rose-500 text-white px-2 py-0.5 rounded-xl'}>ناموفق</span>}</td>
+                                    className={'badge badge--error text-white px-2 py-0.5 rounded-xl'}>ناموفق</span>}</td>
 
                         </tr>
                     })

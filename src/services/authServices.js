@@ -22,3 +22,10 @@ export function updateProfile(data) {
 export function logout() {
     return http.post("/user/logout");
 }
+
+//admin req
+
+
+export function getAllUsers() {
+    return http.get("/admin/user/list").then(({data}) => data.data);
+}
