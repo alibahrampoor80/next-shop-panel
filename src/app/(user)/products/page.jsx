@@ -6,16 +6,23 @@ import queryString from "query-string";
 import {ToLocalDateString} from "@/utils/toLocalDate";
 import CategorySidebar from "./categorySidebar";
 import AddToCart from "@/pages/(user)/products/[slug]/AddToCart";
+import LikeProduct from "@/pages/(user)/products/LikeProduct";
+import {cookies} from "next/headers";
+import {toStringCookie} from "@/utils/ToStringCookie";
+
 
 export const dynamic = 'force-dynamic'
+
 const Products = async ({searchParams}) => {
     // const {products} = await getProducts(queryString.stringify(searchParams))
     // const {categories} = await getCategory()
-    const productsPromise = getProducts(queryString.stringify(searchParams))
+    const cookieStore = cookies()
+    const strCookie = toStringCookie(cookieStore)
+
+    const productsPromise = getProducts(queryString.stringify(searchParams),strCookie)
     const categoriesPromise = getCategory()
 
     const [{products}, {categories}] = await Promise.all([productsPromise, categoriesPromise])
-
 
     return <>
         <h1 className={'text-xl font-bold mb-6'}>صفحه ی محصولات</h1>
@@ -36,6 +43,9 @@ const Products = async ({searchParams}) => {
                                     </div>
                                     <Link href={`/products/${product.slug}`}
                                           className={'text-primary-900 font-bold'}>مشاهده ی محصول</Link>
+
+                                    <LikeProduct product={product}/>
+
                                     <AddToCart product={product}/>
                                 </div>
                             )

@@ -13,7 +13,7 @@ const Header = () => {
 
     return <>
         <header
-            className={`shadow-md mb-10 sticky top-0 transition-all duration-200 ${isLoading ? 'blur-sm opacity-100' : "opacity-100 blur-0"}`}>
+            className={`shadow-md mb-10 sticky top-0 bg-white transition-all duration-200 ${isLoading ? 'blur-sm opacity-100' : "opacity-100 blur-0"}`}>
             <nav>
                 <ul className={'flex items-center justify-around py-2 container xl:max-w-screen-xl'}>
                     <li>
