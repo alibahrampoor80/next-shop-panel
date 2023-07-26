@@ -23,3 +23,9 @@ export function likeProduct(id) {
 
 }
 
+//admin req
+export function addProduct(data) {
+    return http.post(`/admin/product/add`,data).then(({data}) => data.data)
+
+}
+
