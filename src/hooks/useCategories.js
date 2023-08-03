@@ -1,6 +1,6 @@
-import {useQuery} from "react-query";
+import {useMutation, useQuery} from "react-query";
 import {getProducts} from "@/services/productService";
-import {getCategory} from "@/services/categoryService";
+import {AddNewCategory, getCategory} from "@/services/categoryService";
 
 export const UseGetCategories = () => {
     return useQuery({
@@ -9,4 +9,7 @@ export const UseGetCategories = () => {
         retry: false,
         refetchOnWindowFocus: true
     })
+}
+export const UseAddCategory = () => {
+    return useMutation({mutationFn: AddNewCategory})
 }

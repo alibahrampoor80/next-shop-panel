@@ -2,6 +2,7 @@ import {productListTableTHeads} from "@/constants/tableHeads";
 
 import Link from "next/link";
 import {toPersianNumbers, toPersianNumbersWithComma} from "@/utils/toPersianNumbers";
+import {HiEye, HiPencil, HiTrash} from "react-icons/hi";
 
 export default function ProductListTable({products}) {
 
@@ -38,9 +39,22 @@ export default function ProductListTable({products}) {
                                 {toPersianNumbers(product.countInStock)}
                             </td>
                             <td className={'table__td '}>
-                                <Link href={`/admin/products/${product._id}`}
-                                      className={'font-bold'}>مشاهده ی
-                                    جزئیات</Link>
+                                <div className={'flex items-center gap-x-4'}>
+                                    <Link href={`/admin/products/${product._id}`}
+                                          className={'font-bold'}>
+                                        <HiEye className={'w-6 h-6 text-primary-900 '}/>
+                                    </Link>
+                                    <button>
+                                        <HiTrash className={'w-6 h-6 text-rose-600 '}/>
+                                    </button>
+
+                                    <Link href={`/admin/products/edit/${product._id}`}
+                                          className={'font-bold'}>
+                                        <HiPencil className={'w-6 h-6 text-secondary-600 '}/>
+                                    </Link>
+
+
+                                </div>
                             </td>
 
 
