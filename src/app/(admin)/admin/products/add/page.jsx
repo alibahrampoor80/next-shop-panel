@@ -1,17 +1,16 @@
 'use client'
 
-import TextField from "@/common/TextField";
 import {useState} from "react";
-import {TagsInput} from "react-tag-input-component";
+
 import {UseGetCategories} from "@/hooks/useCategories";
-import Select from "react-select";
+
 import {UseAddProducts} from "@/hooks/useProducts";
 import toast from "react-hot-toast";
 import {useRouter} from "next/navigation";
-import LoadingSpinner from "@/components/LoadingSpinner";
+
 import Link from "next/link";
-import {HiArrowLeft, HiBackspace, HiPlusCircle} from "react-icons/hi";
-import {HiBackward} from "react-icons/all";
+import {HiArrowLeft} from "react-icons/hi";
+
 import ProductForm from "@/components/ProductForm";
 
 export default function page() {

@@ -3,8 +3,24 @@ import {productListTableTHeads} from "@/constants/tableHeads";
 import Link from "next/link";
 import {toPersianNumbers, toPersianNumbersWithComma} from "@/utils/toPersianNumbers";
 import {HiEye, HiPencil, HiTrash} from "react-icons/hi";
+import {UseRemoveProduct} from "@/hooks/useProducts";
+import toast from "react-hot-toast";
+import {useRouter} from "next/navigation";
+import {useQueryClient} from "react-query";
 
 export default function ProductListTable({products}) {
+    const {isLoading, mutateAsync} = UseRemoveProduct()
+    const queryClient = useQueryClient()
+    const router = useRouter()
+    const removeProductHandler = async (id) => {
+        try {
+            const {message} = await mutateAsync(id)
+            toast.success(message)
+            await queryClient.invalidateQueries({queryKey: ['get-products']})
+        } catch (err) {
+            toast.error(err?.response?.data?.message)
+        }
+    }
 
     return <>
         <div className="shadow-sm overflow-auto my-8">
@@ -44,7 +60,7 @@ export default function ProductListTable({products}) {
                                           className={'font-bold'}>
                                         <HiEye className={'w-6 h-6 text-primary-900 '}/>
                                     </Link>
-                                    <button>
+                                    <button onClick={() => removeProductHandler(product._id)}>
                                         <HiTrash className={'w-6 h-6 text-rose-600 '}/>
                                     </button>
 

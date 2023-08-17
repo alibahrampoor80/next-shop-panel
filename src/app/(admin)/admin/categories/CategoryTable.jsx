@@ -1,9 +1,24 @@
 import {categoryListTableTHeads} from "@/constants/tableHeads";
 import Link from "next/link";
-import {RiEdit2Line} from "react-icons/all";
+import {RiEdit2Line} from "react-icons/ri";
 import {HiEye, HiTrash,} from "react-icons/hi";
+import {useQueryClient} from "react-query";
+import toast from "react-hot-toast";
+import {useRemoveCategory} from "@/hooks/useCategories";
 
 export default function CategoryTable({categories}) {
+    const {mutateAsync} = useRemoveCategory()
+    const queryClient = useQueryClient()
+
+    const removeCategoryHandler = async (id) => {
+        try {
+            const {message} = await mutateAsync(id)
+            toast.success(message)
+            await queryClient.invalidateQueries({queryKey: ['get-categories']})
+        } catch (err) {
+            toast.error(err?.response?.data?.message)
+        }
+    }
 
     return <>
         <div className="shadow-sm overflow-auto my-8">
@@ -48,8 +63,8 @@ export default function CategoryTable({categories}) {
                                         <Link href={`/admin/categories/${category._id}`}>
                                             <HiEye className={'text-primary-900 h-6 h-6'}/>
                                         </Link>
-                                        {/*onClick={() => removeCategoryHandler(category._id)}*/}
-                                        <button>
+                                        {/**/}
+                                        <button onClick={() => removeCategoryHandler(category._id)}>
                                             <HiTrash className="text-rose-600 w-6 h-6"/>
                                         </button>
                                         <Link href={`/admin/categories/edit/${category._id}`}>

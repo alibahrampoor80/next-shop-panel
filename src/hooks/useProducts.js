@@ -1,5 +1,5 @@
 import {useMutation, useQuery} from "react-query";
-import {addProduct, getOneProductById, getProducts, updateProduct} from "@/services/productService";
+import {addProduct, getOneProductById, getProducts, removeProduct, updateProduct} from "@/services/productService";
 
 export const UseGetProducts = () => {
     return useQuery({
@@ -29,3 +29,8 @@ export const UseGetProductById = (id) => {
 export const UseUpdateProduct = () => {
     return useMutation({mutationFn: updateProduct})
 }
+
+export const UseRemoveProduct = () => {
+    return useMutation({mutationFn: removeProduct})
+}
+

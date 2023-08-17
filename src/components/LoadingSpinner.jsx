@@ -1,17 +1,22 @@
 'use client'
 import React from "react";
-import {ThreeDots} from "react-loader-spinner";
+import {CirclesWithBar, ThreeDots} from "react-loader-spinner";
 
-export default function LoadingSpinner({width = "75", height = "40"}) {
+export default function LoadingSpinner({width = "100", height = "100"}) {
     return (
-        <ThreeDots
-            height={height}
-            width={width}
-            radius="9"
-            color="#4a6dff"
-            ariaLabel="three-dots-loading"
-            visible={true}
-            wrapperClass={'flex justify-center'}
-        />
+
+
+    <CirclesWithBar
+        height={height}
+        width={width}
+        color="#4a6dff"
+        wrapperStyle={{}}
+        visible={true}
+        wrapperClass={'flex justify-center'}
+        outerCircleColor=""
+        innerCircleColor=""
+        barColor=""
+        ariaLabel='circles-with-bar-loading'
+    />
     );
 }

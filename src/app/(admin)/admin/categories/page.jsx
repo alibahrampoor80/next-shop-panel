@@ -1,5 +1,4 @@
 'use client'
-import {UseGetProducts} from "@/hooks/useProducts";
 import LoadingSpinner from "@/components/LoadingSpinner";
 import {UseGetCategories} from "@/hooks/useCategories";
 import Link from "next/link";
